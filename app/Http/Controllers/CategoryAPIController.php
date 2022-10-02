@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
-use Illuminate\Support\Facades\DB;
 
 class CategoryApiController extends Controller
 {
@@ -20,7 +19,7 @@ class CategoryApiController extends Controller
 
     public function findID()
     {
-        return (DB::table('categories')->find(request('id')));
+        return (Category::query()->find(request('id')));
     }
 
     public function store()

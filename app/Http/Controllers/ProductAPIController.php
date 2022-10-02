@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
-use Illuminate\Support\Facades\DB;
 
 class ProductApiController extends Controller
 {
@@ -14,23 +13,36 @@ class ProductApiController extends Controller
     }
 
     public function get(Product $product)
-    {               
+    {     
+        if ($product){
+            $product->view++;
+            $product->save();
+        }          
         return $product;
     }
 
     public function find($name)
     {               
-        return (DB::table('products')->where('name', 'like', '%' . $name . '%')->get());
+        return (Product::query()->where('name', 'like', '%' . $name . '%')->get());
     }
 
     public function findID()
     {
-        return (DB::table('products')->find(request('id')));
+        $product = Product::query()->find(request('id'));
+        if ($product){
+            $product->view++;
+            $product->save();
+        }
+        return $product;
     }
 
     public function filter()
     {
-        return (DB::table('products')->where('category_id', '=', request('categoryId'))->get());
+        
+        return
+        request()->has('categoryId') 
+        ? Product::query()->where('category_id', '=', request('categoryId'))->get()
+        : Product::all();
     }
 
     public function store()
