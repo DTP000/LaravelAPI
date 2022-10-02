@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use Illuminate\Support\Facades\DB;
 
 class ProductApiController extends Controller
 {
@@ -34,6 +35,11 @@ class ProductApiController extends Controller
             $product->save();
         }
         return $product;
+    }
+
+    public function hot()
+    {
+        return DB::table('products')->orderByDesc('view')->limit(30)->get();
     }
 
     public function filter()
@@ -80,6 +86,18 @@ class ProductApiController extends Controller
             'quantity' => request('quantity'),
             'image' => request('image'),
             'category_id' => request('category_id'),
+        ]);
+
+        return [
+            'success' => $success
+        ];
+    }
+
+    public function setView(Product $product)
+    {
+        $success = $product->update([
+            'view' => request('view'),
+            
         ]);
 
         return [

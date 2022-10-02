@@ -29,10 +29,12 @@ Route::put('/categories/{category}', [CategoryApiController::class, 'update']);
 Route::delete('/categories/{category}', [CategoryApiController::class, 'destroy']);
 
 Route::get('/products', [ProductApiController::class, 'index']);
+Route::get('/products/hot', [ProductApiController::class, 'hot']);
 Route::get('/products/find/{name}', [ProductApiController::class, 'find']);
 Route::get('/product/{product}', [ProductApiController::class, 'get']);
 Route::get('/product', [ProductApiController::class, 'findID']);
 Route::get('/products/filter', [ProductApiController::class, 'filter']);
 Route::post('/products', [ProductApiController::class, 'store']);
 Route::put('/products/{product}', [ProductApiController::class, 'update']);
+Route::put('/product/{product}/view', [ProductApiController::class, 'setView']);
 Route::delete('/products/{product}', [ProductApiController::class, 'destroy']);
