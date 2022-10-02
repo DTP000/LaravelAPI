@@ -1,8 +1,5 @@
 /node_modules
 /public/hot
-/public/AppFood
-/public/hung
-/public/linhphi
 /public/storage
 /storage/*.key
 /vendor

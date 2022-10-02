@@ -28,11 +28,6 @@ class ProductApiController extends Controller
         return (DB::table('products')->find(request('id')));
     }
 
-    public function hot()
-    {
-        return (DB::table('products')->where('name', 'like', '%' . "Mach" . '%')->get());
-    }
-
     public function filter()
     {
         return (DB::table('products')->where('category_id', '=', request('categoryId'))->get());

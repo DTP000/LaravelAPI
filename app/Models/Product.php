@@ -18,6 +18,7 @@ class Product extends Model
         'quantity',
         'description',
         'image',
+        'view',
         'category_id',
     ];
 

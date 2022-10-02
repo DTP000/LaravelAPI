@@ -33,7 +33,6 @@ Route::get('/products/find/{name}', [ProductApiController::class, 'find']);
 Route::get('/product/{product}', [ProductApiController::class, 'get']);
 Route::get('/product', [ProductApiController::class, 'findID']);
 Route::get('/products/filter', [ProductApiController::class, 'filter']);
-Route::get('/products/hot', [ProductApiController::class, 'hot']);
 Route::post('/products', [ProductApiController::class, 'store']);
 Route::put('/products/{product}', [ProductApiController::class, 'update']);
 Route::delete('/products/{product}', [ProductApiController::class, 'destroy']);
