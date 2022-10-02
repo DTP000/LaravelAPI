@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
-
+use Illuminate\Support\Facades\DB;
 class CategoryApiController extends Controller
 {
     public function index()
     {
-        return Category::all();
+        return DB::table('categories')->orderByDesc('id')->get();    
     }
 
     public function get(Category $category)
